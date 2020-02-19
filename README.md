@@ -1,3 +1,7 @@
+## WARNING: I'm not an approved Prusa developer, so using this Firmware probably voids your warranty and I'm not responsible for the end of the world, a nuclear meltdown or your printer catching fire.
+
+[![Build Status](https://travis-ci.com/Prussia3D/Prusa-Firmware.svg?branch=MK3)](https://travis-ci.com/Prussia3D/Prusa-Firmware)
+
 # Table of contents
 
 <!--ts-->
