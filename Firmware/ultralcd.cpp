@@ -5832,7 +5832,10 @@ static void pick_mmu_preset_menu()
     MENU_ITEM_FUNCTION_P(_i("Standard v6"), set_standard_v6);
     MENU_ITEM_FUNCTION_P(_i("Slice Magnum"), set_slice_magnum);
     MENU_ITEM_FUNCTION_P(_i("Skeletruder"), set_skeletruder);
+    MENU_ITEM_FUNCTION_P(_i("Dragon HF"), set_dragon_hf);
     MENU_ITEM_FUNCTION_P(_i("Bondtech MK3S"), set_bondtech_mk3s);
+    MENU_ITEM_FUNCTION_P(_i("Bondtech Mosquito"), set_bondtech_mosquito);
+    MENU_ITEM_FUNCTION_P(_i("Bondtech Mosquito Magnum"), set_bondtech_mosquito);
     MENU_END();
 }
 
@@ -5847,11 +5850,18 @@ void mmu_settings_menu(void)
     } else if (mmu_preset == 2) {
         MENU_ITEM_SUBMENU_P(_i("Preset: Skeletruder"), pick_mmu_preset_menu);
     } else if (mmu_preset == 3) {
-        MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech MK3S"), pick_mmu_preset_menu);
+        MENU_ITEM_SUBMENU_P(_i("Preset: Dragon HF"), pick_mmu_preset_menu);
+    } else if (mmu_preset == 4) {
+        MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech MK3/S"), pick_mmu_preset_menu);
+    } else if (mmu_preset == 5) {
+        MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech Mosquito"), pick_mmu_preset_menu);
+    } else if (mmu_preset == 6) {
+        MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech Mosquito Magnum"), pick_mmu_preset_menu);
     }
     MENU_ITEM_EDIT_int3_P(_i("Load Check"), &set_mmu_load_distance, 10, 90);
     MENU_ITEM_EDIT_int3_P(_i("Unload Check"), &set_mmu_unload_distance, 0, 80);
     MENU_END();
+}
 
 void lcd_hw_setup_menu(void)                      // can not be "static"
 {
