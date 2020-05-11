@@ -5,16 +5,6 @@ workspace:
   path: Prusa-Firmware
 
 steps:
-  - name: enviornment
-    image: vertigo235/fw-build:1
-    commands:
-      - printenv
-    when:
-      event: 
-        - push
-        - tag
-        - pull_request
-  
   - name: tests
     image: vertigo235/fw-build:1
     commands:
@@ -47,14 +37,14 @@ steps:
   - name: prepare-hex
     image: vertigo235/fw-build:1
     commands:
-      - cd $DRONE_WORKSPACE
+      - cd $CI_WORKSPACE
       - mkdir out
       - mkdir fileshare
       - cd $DRONE_WORKSPACE_BASE/PF-build-hex
-      - find -type f -name "*.zip" -exec mv -t $DRONE_WORKSPACE/out {} +
-      - find -type f -name "*.hex" -exec mv -t $DRONE_WORKSPACE/out {} +
-      - cd $DRONE_WORKSPACE/fileshare
-      - zip -q -j prusa3d_fw_$(git rev-parse --short HEAD).zip $DRONE_WORKSPACE/out/*.*
+      - mv `find -name "*.zip"` $CI_WORKSPACE/out
+      - mv `find -name "*.hex"` $CI_WORKSPACE/out
+      - cd $CI_WORKSPACE/fileshare
+      - zip -q -j prusa3d_fw_$(git rev-parse --short HEAD).zip $CI_WORKSPACE/out/*.*
 
     when:
       event:
@@ -68,7 +58,7 @@ steps:
     image: vertigo235/fw-build:1
     failure: ignore
     commands:
-      - cd $DRONE_WORKSPACE/fileshare
+      - cd $CI_WORKSPACE/fileshare
       - curl --upload-file prusa3d_fw_$(git rev-parse --short HEAD).zip https://transfer.sh/prusa3d_fw_$(git rev-parse --short HEAD).zip
       - echo
     when:
@@ -83,7 +73,7 @@ steps:
     image: vertigo235/fw-build:1
     failure: ignore
     commands:
-      - cd $DRONE_WORKSPACE/fileshare
+      - cd $CI_WORKSPACE/fileshare
       - curl -F "file=@prusa3d_fw_$(git rev-parse --short HEAD).zip" https://file.io
       - echo
     when:
@@ -103,7 +93,7 @@ steps:
       draft: true    
       checksum: md5
       files: 
-        - $DRONE_WORKSPACE/out/*.*
+        - out/*.*
     when:
       event: 
         - tag
