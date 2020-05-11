@@ -20,7 +20,7 @@
 #define DEVELOPER
 
 // Printer name
-#define CUSTOM_MENDEL_NAME "Bondtech-M MK3s-H"
+#define CUSTOM_MENDEL_NAME "Bondtech-M MK3s-HT"
 
 // Electronics
 #define MOTHERBOARD BOARD_EINSY_1_0a
