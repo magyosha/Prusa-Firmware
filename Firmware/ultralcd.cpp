@@ -5858,7 +5858,7 @@ void mmu_settings_menu(void)
     } else if (mmu_preset == 5) {
         MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech Mosquito"), pick_mmu_preset_menu);
     } else if (mmu_preset == 6) {
-        MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech Mosquito Magnum"), pick_mmu_preset_menu);
+        MENU_ITEM_SUBMENU_P(_i("Preset: Bondtech Mos/Magnum"), pick_mmu_preset_menu);
     }
     MENU_ITEM_EDIT_int3_P(_i("Load Check"), &set_mmu_load_distance, 10, 90);
     MENU_ITEM_EDIT_int3_P(_i("Unload Check"), &set_mmu_unload_distance, 0, 80);
