@@ -107,6 +107,8 @@ bool bearCalibration = eeprom_read_byte((unsigned char *)EEPROM_BEARMODE);
 int mmu_preset = eeprom_read_byte((unsigned char *)EEPROM_MMU_PRESET);
 int set_mmu_load_distance = eeprom_read_byte((unsigned char *)EEPROM_MMU_LOAD);
 int set_mmu_unload_distance = eeprom_read_byte((unsigned char *)EEPROM_MMU_UNLOAD);
+int set_mmu_melt_zone = eeprom_read_byte((unsigned char *)EEPROM_MMU_MELT_ZONE);
+int set_mmu_melt_distance = eeprom_read_byte((unsigned char *)EEPROM_MMU_MELT_DISTANCE);
 
 static float manual_feedrate[] = MANUAL_FEEDRATE;
 
