@@ -41,8 +41,8 @@ steps:
       - mkdir out
       - mkdir fileshare
       - cd $DRONE_WORKSPACE_BASE/PF-build-hex
-      - mv `find -name "*.zip"` $CI_WORKSPACE/out
-      - mv `find -name "*.hex"` $CI_WORKSPACE/out
+      - find -type f -name "*.zip" -exec mv -t $CI_WORKSPACE/out {} +
+      - find -type f -name "*.hex" -exec mv -t $CI_WORKSPACE/out {} +
       - cd $CI_WORKSPACE/fileshare
       - zip -q -j prusa3d_fw_$(git rev-parse --short HEAD).zip $CI_WORKSPACE/out/*.*
 
