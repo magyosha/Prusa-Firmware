@@ -4682,36 +4682,91 @@ void set_standard_v6() {
     mmu_preset = 0;
     set_mmu_load_distance = 60;
     set_mmu_unload_distance = 52;
+    set_mmu_melt_zone = 14.4f;
+    set_mmu_melt_distance = 14.4f;
     eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
 }
 
 void set_slice_magnum() {
     mmu_preset = 1;
     set_mmu_load_distance = 56;
     set_mmu_unload_distance = 48;
+    set_mmu_melt_zone = 9.4f;
+    set_mmu_melt_distance = 19.4f;
     eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
 }
 
 void set_skeletruder() {
     mmu_preset = 2;
     set_mmu_load_distance = 55;
     set_mmu_unload_distance = 47;
+    set_mmu_melt_zone = 9.4f;
+    set_mmu_melt_distance = 14.4f;
     eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
+}
+
+void set_dragon_hf() {
+    mmu_preset = 3;
+    set_mmu_load_distance = 56;
+    set_mmu_unload_distance = 48;
+    set_mmu_melt_zone = 9.4f;
+    set_mmu_melt_distance = 19.4f;
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
 }
 
 void set_bondtech_mk3s() {
-    mmu_preset = 3;
+    mmu_preset = 4;
     set_mmu_load_distance = 71;
     set_mmu_unload_distance = 63;
+    set_mmu_melt_zone = 25.4f;
+    set_mmu_melt_distance = 14.4f;
     eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
     eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
+}
+
+void set_bondtech_mosquito() {
+    mmu_preset = 5;
+    set_mmu_load_distance = 70;
+    set_mmu_unload_distance = 62;
+    set_mmu_melt_zone = 23.4f;
+    set_mmu_melt_distance = 16.4f;
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
+}
+
+void set_bondtech_mosquito_magnum() {
+    mmu_preset = 6;
+    set_mmu_load_distance = 70;
+    set_mmu_unload_distance = 62;
+    set_mmu_melt_zone = 18.4f;
+    set_mmu_melt_distance = 21.4f;
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_PRESET, mmu_preset);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_LOAD, set_mmu_load_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_UNLOAD, set_mmu_unload_distance);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_zone);
+    eeprom_update_byte((unsigned char *)EEPROM_MMU_MELT_ZONE, set_mmu_melt_distance);
 }
 
 #ifndef SNMM
