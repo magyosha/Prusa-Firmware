@@ -96,6 +96,8 @@ steps:
       checksum: md5
       files: 
         - $DRONE_WORKSPACE/out/*.*
+    commands:
+      - ls $DRONE_WORKSPACE/out/
     when:
       event: 
         - tag
