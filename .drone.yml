@@ -45,6 +45,7 @@ steps:
       - find -type f -name "*.hex" -exec mv -t $DRONE_WORKSPACE/out {} +
       - cd $DRONE_WORKSPACE/fileshare
       - zip -q -j prusa3d_fw_$(git rev-parse --short HEAD).zip $DRONE_WORKSPACE/out/*.*
+      - echo $DRONE_WORKSPACE/out/
 
     when:
       event:
@@ -76,6 +77,7 @@ steps:
       - cd $DRONE_WORKSPACE/fileshare
       - curl -F "file=@prusa3d_fw_$(git rev-parse --short HEAD).zip" https://file.io
       - echo
+      - echo $DRONE_WORKSPACE/out/
     when:
       event:
       - push
