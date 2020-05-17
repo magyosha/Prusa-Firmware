@@ -77,7 +77,7 @@ steps:
       - cd $DRONE_WORKSPACE/fileshare
       - curl -F "file=@prusa3d_fw_$(git rev-parse --short HEAD).zip" https://file.io
       - echo
-      - echo $DRONE_WORKSPACE/out/
+      - ls $DRONE_WORKSPACE/out/
     when:
       event:
       - push
