@@ -6547,7 +6547,7 @@ void unload_filament()
 	//		extr_unload2();
 
 	current_position[E_AXIS] -= 45;
-	plan_buffer_line_curposXYZE(5200 / 60, active_extruder);
+	plan_buffer_line_curposXYZE(3400 / 60, active_extruder);
 	st_synchronize();
 	current_position[E_AXIS] -= 15;
 	plan_buffer_line_curposXYZE(1000 / 60, active_extruder);
