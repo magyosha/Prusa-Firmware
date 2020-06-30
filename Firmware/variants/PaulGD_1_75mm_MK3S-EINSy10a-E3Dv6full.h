@@ -133,7 +133,7 @@
 #define UVLO_SUPPORT
 
 // Fan check
-//#define FANCHECK
+#define FANCHECK
 
 // Safety timer
 #define SAFETYTIMER
@@ -333,7 +333,7 @@
 #define EXTRUDER_2_AUTO_FAN_PIN   -1
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
 #define EXTRUDER_AUTO_FAN_SPEED   255  // == full speed
-//#define EXTRUDER_ALTFAN_DETECT
+#define EXTRUDER_ALTFAN_DETECT
 #define EXTRUDER_ALTFAN_SPEED_SILENT 128
 
 
