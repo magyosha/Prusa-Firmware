@@ -229,7 +229,7 @@ void calculate_trapezoid_for_block(block_t *block, float entry_speed, float exit
 #ifdef LIN_ADVANCE
   uint16_t final_adv_steps = 0;
   uint16_t max_adv_steps = 0;
-  if(block->advance_lead) {
+  if (block->advance_lead) {
     final_adv_steps = final_rate * block->adv_comp;
   }
 #endif
@@ -278,16 +278,18 @@ void calculate_trapezoid_for_block(block_t *block, float entry_speed, float exit
 
 #ifdef LIN_ADVANCE
     if (block->use_advance_lead) {
-      // accelerate_steps=0: deceleration-only ramp, max_rate is effectively unused
-      // decelerate_steps=0: acceleration-only ramp, max_rate _is_ final_rate
-      max_adv_steps = final_adv_steps;
-    } else {
-      float max_rate = sqrt(acceleration_x2 * accelerate_steps + initial_rate_sqr);
-      max_adv_steps = max_rate * block->adv_comp;
-    }
-  }
+      if(!accelerate_steps || !decelerate_steps) {
+        // accelerate_steps=0: deceleration-only ramp, max_rate is effectively unused
+        // decelerate_steps=0: acceleration-only ramp, max_rate _is_ final_rate
+        max_adv_steps = final_adv_steps;
+      } else {
+        float max_rate = sqrt(acceleration_x2 * accelerate_steps + initial_rate_sqr);
+        max_adv_steps = max_rate * block->adv_comp;
+      }
+   }
+
 #endif
-}
+  }
 
   CRITICAL_SECTION_START;  // Fill variables used by the stepper in a critical section
   // This block locks the interrupts globally for 4.38 us,
