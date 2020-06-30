@@ -19,7 +19,7 @@
 #define DEVELOPER
 
 // Printer name
-#define CUSTOM_MENDEL_NAME "Prusa i3 MK3S"
+#define CUSTOM_MENDEL_NAME "Prusa MK3S"
 
 // Electronics
 #define MOTHERBOARD BOARD_EINSY_1_0a
@@ -133,7 +133,7 @@
 #define UVLO_SUPPORT
 
 // Fan check
-#define FANCHECK
+//#define FANCHECK
 
 // Safety timer
 #define SAFETYTIMER
@@ -333,7 +333,7 @@
 #define EXTRUDER_2_AUTO_FAN_PIN   -1
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
 #define EXTRUDER_AUTO_FAN_SPEED   255  // == full speed
-#define EXTRUDER_ALTFAN_DETECT
+//#define EXTRUDER_ALTFAN_DETECT
 #define EXTRUDER_ALTFAN_SPEED_SILENT 255
 
 
