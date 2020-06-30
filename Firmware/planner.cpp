@@ -229,7 +229,7 @@ void calculate_trapezoid_for_block(block_t *block, float entry_speed, float exit
 #ifdef LIN_ADVANCE
   uint16_t final_adv_steps = 0;
   uint16_t max_adv_steps = 0;
-  if (block->advance_lead) {
+  if (block->use_advance_lead) {
     final_adv_steps = final_rate * block->adv_comp;
   }
 #endif
