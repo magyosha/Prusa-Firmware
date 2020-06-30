@@ -29,6 +29,7 @@ steps:
       - bash -x PF-build.sh 1_75mm_MK3S-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
       - bash -x PF-build.sh PaulGD_1_75mm_MK3S-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
       - bash -x PF-build.sh 1_75mm_MK3S_Bondtech-16-EINSy10a-SliceE_HT-Mosquito.h ALL $BUILD_TYPE
+      - bash -x PF-build.sh 1_75mm_SilverPSU_MK3S-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
     when:
       event:
        - push
