@@ -1457,19 +1457,6 @@ static bool can_load()
     plan_buffer_line_curposXYZE(MMU_LOAD_FEEDRATE);
     current_position[E_AXIS] -= mmu_unload_distance; //Was 52
     plan_buffer_line_curposXYZE(MMU_LOAD_FEEDRATE);
-
-    #ifdef BONDTECH_MK25S//pull back to 8 mm below drive gear to check if filament path was blocked
-      current_position[E_AXIS] -= 63; // Pull back 63mm, 8 mm below drive gear
-    #elif defined(BONDTECH_MK3S)
-      current_position[E_AXIS] -= 63; // Pull back 63mm, 8 mm below drive gear
-    #elif defined(BONDTECH_MOSQUITO)
-      current_position[E_AXIS] -= 62; // Pull back 62mm, 8 mm below drive gear
-    #elif defined(BONDTECH_MOSQUITO_MAGNUM)
-      current_position[E_AXIS] -= 54; // Pull back 54mm, 8 mm below drive gear
-    #else
-      current_position[E_AXIS] -= 52;
-    #endif
-        plan_buffer_line_curposXYZE(MMU_LOAD_FEEDRATE);
     st_synchronize();
 
     uint_least8_t filament_detected_count = 0;

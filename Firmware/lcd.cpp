@@ -16,11 +16,7 @@
 //-//
 #include "sound.h"
 
-#ifdef WEH002004_OLED
-	#define LCD_DEFAULT_DELAY 100
-#else
-	#define LCD_DEFAULT_DELAY 100
-#endif
+#define LCD_DEFAULT_DELAY 100
 
 #if (defined(LCD_PINS_D0) && defined(LCD_PINS_D1) && defined(LCD_PINS_D2) && defined(LCD_PINS_D3))
 	#define LCD_8BIT
@@ -29,11 +25,6 @@
 // #define VT100
 
 // commands
-// WEH002004-OLED specific commands
-#ifdef WEH002004_OLED
-	#define OLED_INIT 0x00
-#endif
-
 #define LCD_CLEARDISPLAY 0x01
 #define LCD_RETURNHOME 0x02
 #define LCD_ENTRYMODESET 0x04
@@ -70,12 +61,6 @@
 #define LCD_1LINE 0x00
 #define LCD_5x10DOTS 0x04
 #define LCD_5x8DOTS 0x00
-#ifdef WEH002004_OLED
-	#define OLED_FONT_TABLE 0x00 //ENGLISH_JAPANESE
-	//#define OLED_FONT_TABLE 0x01 //WESTERN EUROPEAN FONT I
-	//#define OLED_FONT_TABLE 0x02 //ENGLISH_RUSSIAN
-	//#define OLED_FONT_TABLE 0x03 //WESTERN EUROPEAN FONT II
-#endif
 
 // bitmasks for flag argument settings
 #define LCD_RS_FLAG 0x01
@@ -94,9 +79,9 @@ uint8_t lcd_escape[8];
 #endif
 
 static void lcd_display(void);
-static void lcd_no_display(void);
 
 #if 0
+static void lcd_no_display(void);
 static void lcd_no_cursor(void);
 static void lcd_cursor(void);
 static void lcd_no_blink(void);
@@ -177,7 +162,6 @@ static void lcd_begin(uint8_t clear)
 {
 	lcd_currline = 0;
 
-#ifndef WEH002004_OLED
 	lcd_send(LCD_FUNCTIONSET | LCD_8BITMODE, LOW | LCD_HALF_FLAG, 4500); // wait min 4.1ms
 	// second try
 	lcd_send(LCD_FUNCTIONSET | LCD_8BITMODE, LOW | LCD_HALF_FLAG, 150);
@@ -231,9 +215,6 @@ void lcd_init(void)
 	lcd_displayfunction |= LCD_8BITMODE;
 #endif
 	lcd_displayfunction |= LCD_2LINE;
-#ifdef WEH002004_OLED
-    lcd_displayfunction |= OLED_FONT_TABLE;
-#endif
 	_delay_us(50000); 
 	lcd_begin(1); //first time init
 	fdev_setup_stream(lcdout, lcd_putchar, NULL, _FDEV_SETUP_WRITE); //setup lcdout stream
@@ -253,21 +234,13 @@ void lcd_refresh_noclear(void)
 
 void lcd_clear(void)
 {
-#ifdef WEH002004_OLED
 	lcd_command(LCD_CLEARDISPLAY, 1600);  // clear display, set cursor position to zero
-#else
-	lcd_command(LCD_CLEARDISPLAY, 1600);  // clear display, set cursor position to zero
-#endif
 	lcd_currline = 0;
 }
 
 void lcd_home(void)
 {
-#ifdef WEH002004_OLED
-	lcd_command(LCD_RETURNHOME, 1600);  // set cursor position to zero. TBD
-#else
 	lcd_command(LCD_RETURNHOME, 1600);  // set cursor position to zero
-#endif
 	lcd_currline = 0;
 }
 
@@ -275,14 +248,16 @@ void lcd_home(void)
 void lcd_display(void)
 {
     lcd_displaycontrol |= LCD_DISPLAYON;
-    lcd_command(LCD_DISPLAYCONTROL | lcd_displaycontrol, 1600);
+    lcd_command(LCD_DISPLAYCONTROL | lcd_displaycontrol);
 }
 
+#if 0
 void lcd_no_display(void)
 {
 	lcd_displaycontrol &= ~LCD_DISPLAYON;
-	lcd_command(LCD_DISPLAYCONTROL | lcd_displaycontrol, 1600);
+	lcd_command(LCD_DISPLAYCONTROL | lcd_displaycontrol);
 }
+#endif
 
 #ifdef VT100 //required functions for VT100
 // Turns the underline cursor on/off
